@@ -13,15 +13,12 @@ canvas{
 
 a{
   color: black;
+  cursor: default;
 }
 
-a:hover {
-  font-weight: bold;
-  color: black;
-}
 
 p {
-  padding: 0 80px;
+  padding: 0 88px;
 }
 
 .js-count-particles{
@@ -29,7 +26,7 @@ p {
 }
 
 .content {
-  padding: 0px 64px;
+  padding: 0px 100px;
 }
 /* ---- particles.js container ---- */
 
@@ -50,8 +47,13 @@ body > footer > div.container > div > div.col.l6.s12 > p {
 }
 
 hr.style-two {
-    width: 30%;
+    width: 40%;
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0));
+}
+
+
+h1:hover {
+  user-select: none;
 }

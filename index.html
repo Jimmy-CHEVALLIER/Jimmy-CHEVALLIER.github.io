@@ -2,7 +2,7 @@
 <html lang="en" style="background-color: white !important;">
 <head>
   <meta charset="utf-8">
-  <title>Social Graph</title>
+  <title>The Twitter Elite</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,18 +12,20 @@
 </head>
 <body >
 
-  <div id="particles-js">
-    <img style="position: absolute;left: 0;right: 0;margin-left: auto;margin-right: auto;bottom: 12%;opacity: 1;" src="assets/chevron_down.svg">
-    <div style="position: absolute;left: 0;right: 0;margin-left: auto;top: 20%;margin-right: auto;width: 400px;">
-      <h1>SocialGraph</h1>
-      <h5>By Jimmy CHEVALLIER, Aleksander Frese, Xinguy Xi</h5>
+<!-- Landing panel -->
+  <div id="particles-js" style="position: relative;">
+    <img style="position: absolute;left: 0;right: 0;margin-left: auto;margin-right: auto;bottom: 5%;opacity: 1;" src="assets/chevron_down.svg">
+    <div style="position: absolute;left: 0;right: 0;margin-left: auto;top: 15%;margin-right: auto;width: 430px;">
+      <h1>The Twitter Elite</h1>
+      <label style="color:black; font-weight: bold;">An analysis of the 500 most followed accounts on Twitter</label>
+      <h5>By Jimmy CHEVALLIER, Aleksander Frese, Xingyi Li</h5>
       <div style="float: left; width: 50%;">
         <ul>
-          <li><a href="#chapter1">Introduction</a></li>
-          <li><a href="#chapter2">1 Collect data</a></li>
-          <li><a href="#chapter3">2 Network description</a></li>
-          <li><a href="#chapter4">3 Network proximity</a></li>
-          <li><a href="#chapter5">4 Categories</a></li>
+          <li><a class="summary" href="#chapter0">Project Motivation</a></li>
+          <li><a class="summary" href="#chapter1">1 Collect data</a></li>
+          <li><a class="summary" href="#chapter2">2 Network description</a></li>
+          <li><a class="summary" href="#chapter3">3 Network proximity</a></li>
+          <li><a class="summary" href="#chapter4">4 Categories</a></li>
         </ul>
       </div>
       <div style="float: right; width: 50%;">
@@ -39,9 +41,20 @@
   </div>
 </br></br></br></br></br>
 
+
+<!-- Video panel -->
+
 <div class="plyr__video-embed" id="player" style="width:600px!important; margin: auto;">
-  <iframe src="https://www.youtube.com/embed/3yLFFPSWPmU&feature=youtu.be&origin=http://localhost:8888" allowfullscreen allowtransparency ></iframe>
+  <iframe src="https://www.youtube.com/embed/3yLFFPSWPmU&feature=youtu.be&origin=http://localhost:8888" allowfullscreen allowtransparency></iframe>
 </div>
+<label style="display:block;text-align: center;"><i>Introductury video of the project</i></label>
+
+
+
+
+
+
+
 
 </br></br></br></br></br>
 
@@ -50,48 +63,400 @@
 <div class="content">
 </br></br>
 
-<h1><a name="chapter1">Introduction</a></h1>
+<!-- Introduction panel -->
 
+<h1><a name="chapter0">Project <font color="#7aadff">Motivation</font></a></h1>
+
+</br></br></br>
+
+
+<p>In this project a social network of 500 celebrities on Twitter has been created to analysis the relationship between them. And we have extract the latest 100 tweets of each celebrity for deeper analysis. The analysis methods are acquired from 02805 Social Graphs and Interactions.<br>
+
+For each elite, the information about amount of friend he/she follows, the number of followers will offer us the insight of how the twitter elite connect, which is the social network. Additionally, we can implementing sentimental analysis via collecting latest 100 tweets of each elite, therefore a wordcloud contians the keyword based on tweets could be created. Furthermore, by the sentimetal analysis for each category, we get more insights about what they care about most.<br>
+
+Moreover, employing more analysis method, such as the community detection, nodes centrality, we can grasp some several interesting hidden facts inside this social network.
+</p>
+
+</br></br></br>
+<hr class="style-two">
+
+
+<!-- Part 1 panel -->
+<h1><a name="chapter1">1. Collect <font color="#7aadff">Data</font></a></h1>
+</br></br></br>
+<img class="contentImg" src="assets/collectDataDiagram.png">
+</br></br></br>
+<p>We obtained the Top 500 twitter accounts from Socialblade, by the link of the list, we can access to the twitter accounts directly, then collecting data through twitter API of  each twitter account,  including the number of tweets, the number of friend, the twitter ID, full name, friend list, category,  the number of follower with the rank among 500 accounts. After we get the full name of each accounts, we acquired the category from google by searching it automatically.</p>
+
+<h1><a name="chapter2">2. Network <font color="#7aadff">analysis</font></a></h1>
+<p>JSON structure:
+Twitter handle
+category (profession for the user)
+followersCount (number of accounts that follow the user)
+friendCount (number of accounts that the user is following)
+friendList (names of the accounts that the user is following)
+id_str (account id for the user)
+name (name of the user)
+rank (the user's rank in the top 500 list)
+screen_name (the twitter handle)
+tweetsCount (number of tweets by the user)</p>
+<p>Number of twitter accounts in the data: 497</p>
+
+<h1><a name="chapter3">3. Visualization</a></h1>
+</br></br></br>
+<div style="display: flex;">
+<img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_fullnetwork.png">
+
+<p>Observe: There are three isolated nodes besides the GCC.</p>
+</div>
+</br></br></br>
+<h1><a name="chapter4">4. Basic <font color="#7aadff">statistics</font></a></h1>
+
+<p>Let us take a look at some basic statistics.</p>
+
+<p>number of nodes in the network: 497
+number of links in the network: 13243
+the nodes have an average total degree of: 53.291750503
+the nodes have an average in/out degree of: 26.6458752515 (total and average in- and out-degree is the same, since there is an incoming link for every outgoing link and vice versa)</p>
+
+<p>top 5 elite accounts followed by most other elites:
+BarackObama with 131 followers
+jimmyfallon with 124 followers
+TheEllenShow with 123 followers
+rihanna with 109 followers
+justinbieber with 99 followers
+
+top 5 elite accounts with most friends (following other elite accounts):
+SrBachchan with 146 friends
+SnoopDogg with 131 friends
+RyanSeacrest with 125 friends
+samsmith with 121 friends
+iamwill with 120 friends</p>
+
+<p>number of occupation types in the network (identified from Google Infobox): 30
+
+the network has the following categories:
+Actors
+Athletes
+Authors
+BusinessPeople
+Comedians
+Companies
+DJs
+DigitalMedia
+Entertainers
+Filmdirectors
+GovernmentalBodies
+Journalists
+Magazines
+Models
+MusicGroups
+Musicians
+Newspapers
+Others
+PoliticalParties
+Politicians
+Religion
+RoyalPeople
+Scientists
+Singers
+SocialMedia
+Software
+Sports
+TV
+TVPersonalities
+Youtubers<p>
+</br></br></br>
+<img class="contentImg double" src="assets/graphs/export_categorieswithcount.png">
+</br></br></br>
+
+
+<h1><a name="chapter4">4. Connectedness</a></h1>
+<p>is the graph connected? -> False
+the network has 4 components
+
+component sizes:
+size = 494
+size = 1 , people in component -> amrdiab
+size = 1 , people in component -> cbabdullahgul
+size = 1 , people in component -> marioteguh
+There seems to be three isolated elite accounts, which is coherent with the visualization seen before. These accounts do not follow any elite accounts nor are they followed by any elite accounts.</p>
+<p>the network diameter is: 5</p>
+<p>The elite Twitter account network is not random
+In the following it is shown that the network is not random.<p>
+
+</br></br></br>
+<img class="contentImg double"  src="assets/graphs/export_totaldegreedistr.png">
+</br></br></br>
+
+<p>The plots above do not clearly show that the distribution of total degree follows a poisson/binominal distribution nor a power-law distribution. The loglog plot seem to follow poisson/binominal curve, while the linear scale plot looks like a mixture of a power-law and poisson/binominal distribution, or a skewed poisson distribution. 
+However, the linear scale plot shows that there are a few high-degree nodes (hubs) and many low-degree nodes. To investigate further, we will look at the incoming degrees and outgoing degrees separately.</p>
+
+</br></br></br>
+<img class="contentImg double" src="assets/graphs/export_outdegreedistr.png">
+</br></br></br>
+
+<p>It can be seen here that the distribution of out-degree more closely follows a power-law distribution with a few hubs and many low-degree nodes. Although the loglog plot is not a straight line, the linear scale plot clearly looks more like a power-law distribution than a poisson/binominal distribution. The poisson/binominal distribution thus fails to capture the outgoing degree distribution. Ergo, this network has more highly connected nodes with respect to outgoing degree than the random network model can account for, and thus the network can be said to be scale-free with respect to outgoing degree. This also fits well together with the claim that 'real networks are not poisson' (section 3.4 in the book networksciencebook.com).
+This fits fairly well with the degree distribution of the Barabasi-Albert preferential attachment model, although the preference in this case not necessarily only depends on the degree of the nodes in the network - or even at all.
+If it is concluded that randomness cannot account for the outgoing degree property in the network, it may represent some signature of order. In this case it is interpreted to mean that it is not random whom users choose to follow. This makes sense, since users are in full control of whom they choose to follow. 
+Hubs with respect to outgoing degree are nodes that follow many other elite twitter accounts. These are nodes that likely get alot of information by other elite accounts.</p>
+
+</br></br></br>
+<img class="contentImg double" src="assets/graphs/export_indegreedistr.png">
+</br></br></br>
+
+<p>The distribution of in-degree roughly looks like a power-law distribution on the linear scale, but not as clear as the out-degree. The loglog scale plot looks more like a poisson/binominal distribution plot, however. Conclusively, the incoming degree cannot be fully explained by randomness, but it does not look completely random either. This makes sense, since users cannot completely control who chooses to follow them in the same way they can choose whom to follow, but, as also seen in the scatterplot below, users might have some control over who chooses to follow them. 
+Hubs with respect to incoming degree are nodes that are followed by many elite accounts, and may be important in the sense that they reach alot of elite accounts in Twitter with the information they dissiminate.</p>
+
+</br></br></br>
+<img class="contentImg double" src="assets/graphs/export_inoutscatterheatmap.png">
+</br></br></br>
+
+<p>This scatter plot is very interesting. It shows a positive correlation between followers and following. People strongly tend to follow more elite accounts as more elite accounts follow them. Up until around 50-60, the number of out-degree is nearly the exact same as the in-degree. This could be a clear reflection of accounts following back accounts that follow them. The "you follow me, I follow you" principle or the "follow-back" principle.
+Additionally, the majority of the accounts how low in-degrees and out-degrees.</p>
+
+
+<h1><a name="chapter5">5. Regime</a></h1>
+<p>It will be examined which regime the network is in.</p>
+
+<p>the network is in the connected regime
+This is an interesting result, because according to section 3.6 in networksciencebook.com, it should be true for the connected regime that 'the giant component absorbs all nodes and components. In the absence of isolate nodes the network becomes connected'. But this is not the case in this network. As seen earlier, there are three isolated nodes besides the giant component, even though the statistics of the network places it in the connected regime. This deviation from the mathematical prediction must be explanied by some underlying signature of order, i.e. active decision-making in terms of whom to follow on Twitter, further underlining the non-randomness.</p>
+
+
+<h1><a name="chapter6">?. Clusturing MAYBE !!</a></h1>
+<p>average clustering coefficient: 0.356247286567</p>
+
+<h1><a name="chapter6">6. Visualization of counts in the network (followCount, friendCount and tweetsCount)</a></h1>
+<p>The following visualizations and work is done on basis of the GCC.</p>
+<p>The size of the nodes bellow are related to attributes</p>
+
+  <div style="display: flex;">
+    <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeFollowers.png">
+    <div style="">
+      <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeFriends.png">
+      <br>
+      <p>Looking at the out-degree distribution, it makes sense that we see a few nodes with a very big size and many nodes with very small sizes (mostly too small to see).</p>
+    </div>
+    <br>
+  </div>
+  <div style="display: flex;">
+    <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeTweets.png">
+    <div>
+      <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeRank.png">
+      <br>
+      <p>There seems to be no concentration of nodes according to rank. Nodes are spread out fairly evenly in terms of rank.</p>
+    </div>
+  </div>
+
+
+<h1><a name="chapter7">7. Visualization of the occupation categories in the network</a></h1>
+</br></br>
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_graphCategoriesColored.png">
 </br></br>
 
-<img style="display:block;margin: auto; width: 800px;" src="assets/collectdata.jpg">
+<p><b>Hubs</b></p>
+<p>Analyze the network for hubs. The out-degree distribution looks like a power-law distribution on the linear scale. Does this mean that the network is scale-free? Do we need to have a degree distribution for the total degree, i.e. a degree distribution for the undirected version of the graph?
+<p><b>Centrality</b></p>
+<p>In the following, the most important nodes/accounts by different centrality measures will be highlighted. The centrality measures investigated in this section are degree centrality, betweenness centrality, and eigenvector centrality.</p>
+<p><b>also</b> do closeness centrality https://www.cl.cam.ac.uk/teaching/1314/L109/tutorial.pdf, slide 36</p>
+
 </br></br></br>
+<div style="display: flex;">
+<img class="contentImg" style="width: 500px;height: 400px;" src="assets/graphs/export_graphNodeSizeDegree.png">
+<img class="contentImg" style="width: 500px;height: 400px;" src="assets/graphs/export_graphNodeSizeBetw.png">
+</div>
+</br></br></br></br></br>
+<img class="contentImg" src="assets/graphs/export_graphNodeSizeEig.png">
 
 
-<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
 
-</br></br></br>
 
-<h1><a name="chapter2">1. Collect Data</a></h1>
-<h1><a name="chapter3">2.</a></h1>
-<h1><a name="chapter4">3.</a></h1>
-<h1><a name="chapter5">4.</a></h1>
-<h1>5.</h1>
+<h1><a name="chapter8">8. Communities</a></h1>
+<p>The Louvain algorithm will be used to detect communities. We will se how well they fit with the categories.</p>
+<p>the Louvain algorithm found 5 communities</p>
+<p>The Louvain algorithm found 5 communities, which is much smaller than the number of categories we have (30). Why? Are the accounts likely to not care about the occupation of other accounts?</p>
+<p>modularity for the partition suggested by the Louvain algorithm is: 0.304122333979</p>
+<p>The modularity for the communities found by the Louvain algorithm is .3, which is rather low, suggesting that the communities found by the algorithm may not represent reality very well.</p>
 
 </br></br></br></br></br>
+<img class="contentImg" style="width: 600px;height: 500px;" src="assets/graphs/export_graphLouvainComm.png">
 </br></br></br></br></br>
 
+</br></br></br></br></br>
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_confMatrix1.png">
+</br></br></br></br></br>
+
+<p>To make the confusion matrix even more clear, we will make the confusion based on log values to bring out the data more clearly, because for the raw count there is a very big difference in the number of people in a category.</p>
+
+</br></br></br></br></br>
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_confMatrix2.png">
+</br></br></br></br></br>
+
+<p>To try to shed even more light on who connects to whom, we will show only one colored square per category. This more clearly shows in which community the majority of accounts from each category are placed.</p>
+
+
+</br></br></br></br></br>
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_confMatrix3.png">
+</br></br></br></br></br>
+
+
+<p>
+  From this confusion matrix, it can be elicited which categories connect more.<br>
+Communities:<br>
+0 (Music)<br>
+Companies<br>
+DJs<br>
+Entertainers<br>
+Models<br>
+Music groups<br>
+Musicians<br>
+Singers<br>
+TV personalities<br>
+Youtubers<br>
+1 (Information and society changes)<br>
+Authors<br>
+Business people<br>
+Comedians<br>
+Digital Media<br>
+Governmental Bodies<br>
+Journalists<br>
+Magazines<br>
+Newspapers<br>
+Others<br>
+Politicians<br>
+Royal people<br>
+Scientists<br>
+Social media<br>
+Software<br>
+TV<br>
+2 (Film/Movies)<br>
+Actors<br>
+Film directors<br>
+Political parties<br>
+3 (Sports)<br>
+Athletes<br>
+Sports<br>
+4 (Religion)<br>
+Religion<br><br>
+As evident from the list above, there seems to be a system in the communities.
+Accounts affiliated with music (singers, music groups, djs, etc.) seem to gather in one community with some other accounts. Youtubers, companies, models and tv personalities might not directly have something to do with music, but seem to want to connect a lot with accounts affilitated with music.<br>
+Accounts that more or less directly impact society and influence people's position or attitude on certain matters seem to gather in one community. Authors, digital media, journalists, newspapers, politicans and media seem to fit together well.
+Accounts affiliated with film and movie making are nicely grouped in a community (actors and film directors). Political parties seem like a misplaced category here as it seems to fit better in with the previously mentioned community.
+Accounts affiliated with sports are grouped into a community, which makes sense.
+And finally, there is a single account affiliated with religion, which has been placed in its own community.<br>
+From the confusion matrix, we can see that most of the singers are in a community together. Many of the network's atheltes are also placed in a community together. However, actors are split up into largely 3 communities, some of which find themselves in the same community as most of the singers, and some with most of the Digital Media. We also see a somewhat strong correlation between Athletes and Sports, whom are largely placed in the same community.</p>
+
+
+<h1><a name="chapter9">9. Assortativity</a></h1>
+<p>In the following, we will check for assortativity on two parameters: Degree and category.</p>
+<p>0.042287123080426925</p>
+<p>Conclusion: The degree assortativity is effectively 0, so there is no assortativity, i.e. the assortativity is basically random, i.e. there is no pattern in who connects to whom in terms of their degrees.</p>
+
+<p>0.13245860604</p>
+<p>Conclusion: The category assortativity is 0.13, which is still not high and therefore does not suggest a strong assortativity based on category, but it is higher than the degree assortativity, and it is above 0, suggesting that there is some assortativity with respect to category.</p>
+<p>This also supports the findings from the confusion matrix. While accounts in general connect with accounts from many other categories, Singers tend to connect more to Musicians, DJs, Actors and Youtubers - which makes sense.</p>
+<p>Just to check, we have also checked assortativity on the rest of the attributes:<br>
+Count of tweets<br>
+Count of followers<br>
+Rank (effectively the same as 'count of followers' as the rank is based on the number of followers)<br>
+Count of friends<br>
+</p>
+
+
+
+
+
+<h1><a name="chapter10">10. Wordclouds</a></h1>
+
+
+<!-- Select input panel -->
+  <div class="input-field col s12">
+    <select style="display: block; width: 150px; margin: auto;margin-bottom: 32px;" onchange="wordcloudOnChange(this.value)">
+  <option value="" disabled selected>Select a category</option>
+<option value='Singers'> Singers </option>
+<option value='Actors'> Actors </option>
+<option value='Athletes'> Athletes </option>
+<option value='DigitalMedia'> DigitalMedia </option>
+<option value='Politicians'> Politicians </option>
+<option value='Companies'> Companies </option>
+<option value='TV'> TV </option>
+<option value='Musicians'> Musicians </option>
+<option value='Entertainers'> Entertainers </option>
+<option value='Sports'> Sports </option>
+<option value='Youtubers'> Youtubers </option>
+<option value='Religion'> Religion </option>
+<option value='BusinessPeople'> BusinessPeople </option>
+<option value='MusicGroups'> MusicGroups </option>
+<option value='Authors'> Authors </option>
+<option value='Others'> Others </option>
+<option value='Journalists'> Journalists </option>
+<option value='DJs'> DJs </option>
+<option value='Comedians'> Comedians </option>
+<option value='Newspapers'> Newspapers </option>
+<option value='Models'> Models </option>
+<option value='TVPersonalities'> TVPersonalities </option>
+<option value='Magazines'> Magazines </option>
+<option value='GovernmentalBodies'> GovernmentalBodies </option>
+<option value='SocialMedia'> SocialMedia </option>
+<option value='Filmdirectors'> Filmdirectors </option>
+<option value='Software'> Software </option>
+<option value='Scientists'> Scientists </option>
+<option value='RoyalPeople'> RoyalPeople </option>
+<option value='PoliticalParties'> PoliticalParties </option>
+    </select>
+    <label>Generate wordcloud for a specific celebrity</label>
+  </div>
+
+<img id="wordcloudImgSelectable" src="assets/bird.png" style="text-align: center;display: block;margin:auto;width: 500px;">
+
+
+
+
+
+<h1><a name="chapter11">11. Sentiment analysis</a></h1>
+
+
+<img class="contentImg" src="assets/graphs/export_sentimentPerAccountColoredOrdered.png">
+
+
+<h1><a name="chapter12">12. Positive and negative tweets
+</a></h1>
+
+</br></br></br></br></br>
+<img class="contentImg" src="assets/graphs/export_wordcloudPositive.png">
+</br></br></br></br></br>
+</br></br></br></br></br>
+<img class="contentImg" src="assets/graphs/export_wordcloudNegative.png">
+</br></br></br></br></br>
+
+<h1><a name="chapter13">13. Assortativity by sentiment
+</a></h1>
+<p>To tie the graph part together with the sentiment part, the network is analyzed for assortativity by positivity and negativity to answer the question: "Do accounts of the same average sentiment tend to connect with eachother?" As in do positive people tend to connect to other positive people, and do negative people tend to connect to other negative people? Or is there no system in this?</p>
+<p>The average sentiment for each account does not seem to account for much assortativity as the value is 0.05, which is effectively 0 on a scale from 0 to 1. This result is likely affected by the limitation that the sentiment calculation is not 100% correct as it does not evaluate the context in which words are used, which may produce a wrong result.</p>
+
+<h1><a name="conclusion">Conclusion</a></h1>
+<p>To conclude this investigation and project, it does not seem like there are any one account or person that secretly has extrordinally much power.</p>
 
 
 </div>
 
-
-
-
-
+<!-- Footer -->
 <footer class="page-footer">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
         <h5 class="white-text">Final Project</h5>
-        <p class="grey-text text-lighten-4">Study of the 500 most important accounts on Twitter.</p>
+        <p class="grey-text text-lighten-4">Date of delivery: 12th December 2018 
+Course: 02805 Social Graphs and Interactions 
+Course responsible: Sune Lehmann Jørgensen 
+DTU - Technical University of Denmark</p>
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Group</h5>
         <ul>
-          <li><a class="grey-text text-lighten-3" href="#!">Jimmy Chevallier</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Alexander Frese</a></li>
-          <li><a class="grey-text text-lighten-3" href="#!">Xingui Xi</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Jimmy Chevallier | s181813</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Aleksander Frese | s163859</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Xingyi Li | s171985</a></li>
         </ul>
       </div>
     </div>
@@ -105,29 +470,23 @@
 </footer>
 
 
-<style>
-
-a{
-  color: black;
-  cursor: -webkit-grab; 
-  cursor: grab;
-}
-
-a:hover {
-  font-weight: bold;
-  color: black;
-}
-
-.page-footer {
-  background-color: #BDBDBD;
-}
-</style>
 
 
 <script src="https://cdn.plyr.io/3.4.7/plyr.js"></script>
 <script>const player = new Plyr('#player');</script>
 <script type="text/javascript"  src="/particlesCustom.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+<script>
+function wordcloudOnChange(url) {
+  var picurl = '/assets/graphs/export_wordcloudCategory_'+ url +'.png';
+  document.getElementById("wordcloudImgSelectable").src=picurl;
+  document.getElementById("wordcloudImgSelectable").style.margin='auto';
+}
+</script>
+
 
 <script type="text/javascript">
 
@@ -154,105 +513,105 @@ a:hover {
           "nb_sides": 5
         },
         "image": {
-	        "src": "/assets/bird.png",
-	        "width": 123,
-	        "height": 100,
-          "opacity": 0.5,
-          "color": "red"
-        }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 0.5,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 20,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
+         "src": "/assets/bird.png",
+         "width": 123,
+         "height": 100,
+         "opacity": 0.5,
+         "color": "red"
+       }
+     },
+     "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 0.5,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 20,
+      "random": true,
+      "anim": {
+        "enable": false,
         "speed": 1,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
+        "size_min": 0.1,
+        "sync": false
       }
     },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": false,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 0.4
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 1
-        },
-        "repulse": {
-          "distance": 200
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 1
     },
-    "retina_detect": true,
-    "config_demo": {
-      "hide_card": false,
-      "background_color": "#b61924",
-      "background_image": "",
-      "background_position": "50% 50%",
-      "background_repeat": "no-repeat",
-      "background_size": "cover"
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
     }
-  });
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 0.4
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 1
+      },
+      "repulse": {
+        "distance": 200
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true,
+  "config_demo": {
+    "hide_card": false,
+    "background_color": "#b61924",
+    "background_image": "",
+    "background_position": "50% 50%",
+    "background_repeat": "no-repeat",
+    "background_size": "cover"
+  }
+});
 
   $('#particles-js').css('width', '100%');
-  $('#particles-js').css('height', '90%');
+  $('#particles-js').css('height', '650px');
   $('#particles-js'+' > .particles-js-canvas-el').css('background-color', '#BDBDBD');
   $('html  body').css('background-color', 'white');
   $('#particles-js').css('background-color', 'white');
@@ -260,6 +619,26 @@ a:hover {
 
 
 </script>
-
+<style type="text/css">
+img.double {
+  width: 1000px !important;
+}
+img.contentImg {
+  text-align: center;
+  display: block;
+  margin:auto;width: 600px;
+}
+a:hover {
+  font-weight: normal;
+  color: black;
+}
+.summary:hover {
+  font-weight: bold!important;
+  color: black;
+}
+.page-footer {
+  background-color: #BDBDBD !important;
+}
+</style>
 </body>
 </html>
