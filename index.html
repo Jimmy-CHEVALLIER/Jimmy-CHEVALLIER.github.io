@@ -15,7 +15,7 @@
   <!-- Landing panel -->
   <div id="particles-js" style="position: relative;">
     <img style="position: absolute;left: 0;right: 0;margin-left: auto;margin-right: auto;bottom: 5%;opacity: 1;" src="assets/chevron_down.svg">
-    <div style="position: absolute;left: 0;right: 0;margin-left: auto;top: 15%;margin-right: auto;width: 430px;">
+    <div style="position: absolute;left: 0;right: 0;margin-left: auto;top: 8%;margin-right: auto;width: 430px;">
       <h1>The Twitter Elite</h1>
       <label style="color:black; font-weight: bold;">An analysis of the 500 most followed accounts on Twitter</label>
       <h5>By Jimmy CHEVALLIER, Aleksander Frese, Xingyi Li</h5>
@@ -23,20 +23,30 @@
         <ul>
           <li><a class="summary" href="#chapter0">Project Motivation</a></li>
           <li><a class="summary" href="#chapter1">1 Collect data</a></li>
-          <li><a class="summary" href="#chapter2">2 Network description</a></li>
-          <li><a class="summary" href="#chapter3">3 Network proximity</a></li>
-          <li><a class="summary" href="#chapter4">4 Categories</a></li>
+          <li><a class="summary" href="#chapter2">2 Data analysis</a></li>
+          <li><a class="summary" href="#chapter3">3 Graph visualisation</a></li>
+          <li><a class="summary" href="#chapter4">4 Basic statistics</a></li>
+          <li><a class="summary" href="#chapter5">5 Connectedness</a></li>
+          <li><a class="summary" href="#chapter6">6 Regime</a></li>
+          <li><a class="summary" href="#chapter7">7 Count visualisation</a></li>
         </ul>
       </div>
       <div style="float: right; width: 50%;">
         <ul>
-          <li><a>5 Tweets</a></li>
-          <li><a>6 Sentiment analysis</a></li>
-          <li><a>7 Happyness index</a></li>
-          <li><a>8 Others</a></li>
-          <li><a>9 Conclusion</a></li>
+          <li><a class="summary" href="#chapter8">8 Occupation visualisation</a></li>
+          <li><a class="summary" href="#chapter9">9 Louvain communities</a></li>
+          <li><a class="summary" href="#chapter10">10 Assortability</a></li>
+          <li><a class="summary" href="#chapter11">11 Wordlclouds</a></li>
+          <li><a class="summary" href="#chapter12">12 Sentiment analysis</a></li>
+          <li><a class="summary" href="#chapter13">13 Valence</a></li>
+          <li><a class="summary" href="#chapter14">14 Assortability by sentiment</a></li>
+          <li><a class="summary" href="#conclusion">Conclusion</a></li>
+
+
         </ul>
-      </div>
+      </div> <br><br>
+      <a style="" class="waves-effect grey btn"><i class="material-icons left">cloud</i>Download the study here</a>
+
     </div>
   </div>
 </br></br></br></br></br>
@@ -281,10 +291,6 @@ In the following it is shown that the network is <b>not random</b>.<p>
 
 <p>the network is in the connected regime
 This is an interesting result, because according to section 3.6 in networksciencebook.com, it should be true for the connected regime that 'the giant component absorbs all nodes and components. In the absence of isolate nodes the network becomes connected'. But this is not the case in this network. As seen earlier, there are three isolated nodes besides the giant component, even though the statistics of the network places it in the connected regime. This deviation from the mathematical prediction must be explanied by some underlying signature of order, i.e. active decision-making in terms of whom to follow on Twitter, further underlining the non-randomness.</p>
-
-
-<h1><a name="chapter6">?. Clusturing MAYBE !!</a></h1>
-<p>average clustering coefficient: 0.356247286567</p>
 
 <h1><a name="chapter7">7. Visualization of <font color="#7aadff">counts</font> in the network (followCount, friendCount and tweetsCount)</a></h1>
 <p>The following visualizations and work is done on basis of the GCC.</p>
@@ -542,7 +548,7 @@ This is an interesting result, because according to section 3.6 in networkscienc
   <img class="contentImg" src="assets/graphs/export_sentimentPerAccountColoredOrdered.png">
 
 
-  <h1><a name="chapter13">13. Positive and negative tweets
+  <h1><a name="chapter13">13. Valence (Positive and negative tweets)
   </a></h1>
 
 
@@ -559,7 +565,7 @@ This is an interesting result, because according to section 3.6 in networkscienc
 
   <h1><a name="conclusion">Conclusion</a></h1>
   <p>To conclude this investigation and project, it does not seem like there are any one account or person that secretly has extrordinally much power.</p>
-
+<br><br><br>
 
 </div>
 
