@@ -45,7 +45,7 @@
 
         </ul>
       </div> <br><br>
-      <a style="" class="waves-effect grey btn"><i class="material-icons left">cloud</i>Download the study here</a>
+      <a style="" class="waves-effect grey btn" href="https://mega.nz/#!WagAUIZA!8rMdLJeSgKWXbOoDcT_vCVj7DlOBf2CsaFbspjxD2vs"><i class="material-icons left">cloud</i>Download the study here</a>
 
     </div>
   </div>
@@ -298,12 +298,12 @@ This is an interesting result, because according to section 3.6 in networkscienc
 
 <div style="display: flex;">
   <div>
-    <img class="contentImg" style="width: 550px;height: 550px; margin: 0 0!important;" src="assets/graphs/export_graphNodeSizeFollowers.png">
+    <img class="contentImg" style="width: 550px;height: 500px; margin: 0 0!important;" src="assets/graphs/export_graphNodeSizeFollowers.png">
     <p>A very important note for this plot is that the node size is set according to the number of total followers the account has on Twitter. This includes accounts that are not in the elite. 
     The number of followers does differ between the nodes in the network, however the difference does not seem to be very significant. More followed nodes seem to be positioned towards the inner half of the network.</p>
   </div>
   <div>
-    <img class="contentImg" style="width: 550px;height: 550px;" src="assets/graphs/export_graphNodeSizeFriends.png">
+    <img class="contentImg" style="width: 550px;height: 500px;" src="assets/graphs/export_graphNodeSizeFriends.png">
     <p>Looking at the out-degree distribution, visualised previously, it makes sense that we see a few nodes with a very big size and many nodes with very small sizes (mostly too small to see). Recall, that the out-degree distribution was very much shaped like a power-law, i.e. there are many nodes of small in-degree and a very few nodes of very high in-degree, which is coherent with the few large nodes in the visualization above.</p>
   </div>
   <br>
@@ -545,8 +545,30 @@ This is an interesting result, because according to section 3.6 in networkscienc
   <h1><a name="chapter12">12. Sentiment analysis</a></h1>
 
 
-  <img class="contentImg" src="assets/graphs/export_sentimentPerAccountColoredOrdered.png">
+  <img class="contentImg" style="width: 1100px;" src="assets/graphs/export_sentimentPerAccountColoredOrdered.png">
 
+<p>This plot ranges each account by their average sentiment score and colors the bar according to the category. By doing this it is possible to observe that <b>there is a system in which categories post more positive tweets and which categories post more negative tweets</b>.
+It can be elicited from this plot that the green-ish categories are more positive, while the the purple-ish categories are more negative.<br><br>
+As such, the following categories can with high likelihood be said to post more <b>positive</b> content:<br>
+<ul class="liste" style="list-style-type: circle; margin-left: 150px;">
+<li>Comedians</li>
+<li>Music groups</li>
+<li>Sports</li>
+<li>Royal people</li>
+<li>Athletes</li>
+<li>Political parties</li>
+</ul>
+</p><br><br>
+<p>
+Conversely, the following categories can with high likelihood be said to post more <b>negative</b> content:<br>
+<ul class="liste" style="list-style-type: circle; margin-left: 150px;">
+<li>Digital media</li>
+<li>Newspapers</li>
+<li>Social media</li>
+<li>Companies</li>
+<li>Politicians</li>
+</ul>
+</p>
 
   <h1><a name="chapter13">13. Valence (Positive and negative tweets)
   </a></h1>
@@ -564,7 +586,11 @@ This is an interesting result, because according to section 3.6 in networkscienc
   <p>The average sentiment for each account does not seem to account for much assortativity as the value is 0.05, which is effectively 0 on a scale from 0 to 1. This result is likely affected by the limitation that the sentiment calculation is not 100% correct as it does not evaluate the context in which words are used, which may produce a wrong result.</p>
 
   <h1><a name="conclusion">Conclusion</a></h1>
-  <p>To conclude this investigation and project, it does not seem like there are any one account or person that secretly has extrordinally much power.</p>
+  <p>To conclude this investigation and project, it does not seem like there is any one account or person that secretly has extraordinarily much power as we expected. Nevertheless, we truly gain more insight about the method we have learnt from this course.
+Although it is obvious in the heatmap that communities with similar characters have more possibilities to connect to each other, for example, sports are more closely relevant to athletes, the assortativity turns out that we cannot assert the individual elite tends to connect the one with common characteristic.<br><br>
+It is stated in the introductory video that we would like to figure out the influence among the elite accounts of Twitter, however, it is not completely possible to understand how they affect others from the work done in this project. One can recommend that via checking the amounts of retweets of them might offer some useful information.<br><br>
+Furthermore, many of the "elite" accounts on Twitter are likely not managed directly by the person/people it represents, but rather by some sort of social media manager or press person. This could strongly affect to which degree nodes in the network are affected by eachother.<br><br>
+Finally, some tweets was translated using a Google Translate API. The sentiment for people with tweets posted in another language than english might be strongly affected by this.</p>
 <br><br><br>
 
 </div>
@@ -767,6 +793,9 @@ a:hover {
 }
 .page-footer {
   background-color: #BDBDBD !important;
+}
+.liste {
+  list-style-type: square!important;
 }
 </style>
 </body>
