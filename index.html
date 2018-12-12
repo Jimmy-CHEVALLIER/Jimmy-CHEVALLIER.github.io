@@ -145,7 +145,7 @@ a:hover {
         "value": "#ffffff"
       },
       "shape": {
-        "type": "circle",
+        "type": "image",
         "stroke": {
           "width": 0,
           "color": "#000000"
@@ -154,9 +154,11 @@ a:hover {
           "nb_sides": 5
         },
         "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
+	        "src": "/assets/bird.png",
+	        "width": 123,
+	        "height": 100,
+          "opacity": 0.5,
+          "color": "red"
         }
       },
       "opacity": {
@@ -204,7 +206,7 @@ a:hover {
       "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": true,
+          "enable": false,
           "mode": "repulse"
         },
         "onclick": {
@@ -217,7 +219,7 @@ a:hover {
         "grab": {
           "distance": 400,
           "line_linked": {
-            "opacity": 1
+            "opacity": 0.4
           }
         },
         "bubble": {
@@ -255,7 +257,8 @@ a:hover {
   $('html  body').css('background-color', 'white');
   $('#particles-js').css('background-color', 'white');
 
-  
+
+
 </script>
 
 </body>
