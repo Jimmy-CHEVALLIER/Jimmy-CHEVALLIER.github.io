@@ -12,7 +12,7 @@
 </head>
 <body >
 
-<!-- Landing panel -->
+  <!-- Landing panel -->
   <div id="particles-js" style="position: relative;">
     <img style="position: absolute;left: 0;right: 0;margin-left: auto;margin-right: auto;bottom: 5%;opacity: 1;" src="assets/chevron_down.svg">
     <div style="position: absolute;left: 0;right: 0;margin-left: auto;top: 15%;margin-right: auto;width: 430px;">
@@ -67,17 +67,17 @@
 
 <h1><a name="chapter0">Project <font color="#7aadff">Motivation</font></a></h1>
 
-</br></br></br>
+</br>
 
 
-<p>In this project a social network of 500 celebrities on Twitter has been created to analysis the relationship between them. And we have extract the latest 100 tweets of each celebrity for deeper analysis. The analysis methods are acquired from 02805 Social Graphs and Interactions.<br>
+<p>In this project a social network of the <b><font color="#7aadff">500 most followed accounts</font></b> on Twitter has been created to analysis the relationship between them. And we have extract the latest <b><font color="#7aadff">200 tweets</font></b> of each account for deeper analysis. The analysis methods are acquired from <b>02805 Social Graphs and Interactions.</b><br><br>
 
-For each elite, the information about amount of friend he/she follows, the number of followers will offer us the insight of how the twitter elite connect, which is the social network. Additionally, we can implementing sentimental analysis via collecting latest 100 tweets of each elite, therefore a wordcloud contians the keyword based on tweets could be created. Furthermore, by the sentimetal analysis for each category, we get more insights about what they care about most.<br>
+  For each elite, the information about amount of friend he/she follows, the number of followers will offer us the insight of how the twitter elite connect, which is the social network. Additionally, we can implementing <b>sentimental analysis</b> via collecting latest 200 tweets of each elite, therefore a wordcloud contians the keyword based on tweets could be created. Furthermore, by the sentimetal analysis for each category, we get more insights about what they care about most.<br><br>
 
-Moreover, employing more analysis method, such as the community detection, nodes centrality, we can grasp some several interesting hidden facts inside this social network.
+  Moreover, employing more analysis method, such as the <b>community detection</b>, <b>nodes centrality</b>, we can grasp some several interesting hidden facts inside this social network.
 </p>
 
-</br></br></br>
+</br>
 <hr class="style-two">
 
 
@@ -86,137 +86,197 @@ Moreover, employing more analysis method, such as the community detection, nodes
 </br></br></br>
 <img class="contentImg" src="assets/collectDataDiagram.png">
 </br></br></br>
-<p>We obtained the Top 500 twitter accounts from Socialblade, by the link of the list, we can access to the twitter accounts directly, then collecting data through twitter API of  each twitter account,  including the number of tweets, the number of friend, the twitter ID, full name, friend list, category,  the number of follower with the rank among 500 accounts. After we get the full name of each accounts, we acquired the category from google by searching it automatically.</p>
+<p>We obtained the Top 500 twitter accounts from <font color="#7aadff"><b>Socialblade</b></font>, by the link of the list, we can access to the twitter accounts directly, then collecting data through <font color="#7aadff"><b>Twitter API</b></font> of  each twitter account,  including the <b>number of tweets</b>,  <b>the number of friend</b>, the <b>twitter ID </b>,  <b>full name </b>,  <b>friend list </b>,  the <b>number of follower</b> with the <b>rank</b> among 500 accounts. After we get the full name of each accounts, we acquired the <b>category</b> from <font color="#7aadff"><b>Google</b></font> by searching it automatically with a python script.</p>
 
-<h1><a name="chapter2">2. Network <font color="#7aadff">analysis</font></a></h1>
-<p>JSON structure:
-Twitter handle
-category (profession for the user)
-followersCount (number of accounts that follow the user)
-friendCount (number of accounts that the user is following)
-friendList (names of the accounts that the user is following)
-id_str (account id for the user)
-name (name of the user)
-rank (the user's rank in the top 500 list)
-screen_name (the twitter handle)
-tweetsCount (number of tweets by the user)</p>
-<p>Number of twitter accounts in the data: 497</p>
+<h1><a name="chapter2">2. Data <font color="#7aadff">analysis</font></a></h1>
+<p>The number of twitter accounts in the data is now <b>497</b> because 3 of them were suspended.
+The calculations made in our whole study are based on the data structure presented below.</p>
+<h4 style="margin-left: 80px;">JSON structure for each Twitter handle</h4>
+<table style="width: 50%;margin: auto;">
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>detail</th>
+    </tr>
+  </thead>
 
-<h1><a name="chapter3">3. Visualization</a></h1>
+  <tbody>
+    <tr>
+      <td>category</td>
+      <td>profession/occupation for the user</td>
+    </tr>
+    <tr>
+      <td>followersCount</td>
+      <td>number of accounts that follow the user</td>
+    </tr>
+    <tr>
+      <td>friendCount</td>
+      <td>number of accounts that the user is following</td>
+    </tr>
+    <tr>
+      <td>friendList</td>
+      <td>names of the accounts that the user is following</td>
+    </tr>
+
+    <tr>
+      <td>id_str</td>
+      <td>account id for the user</td>
+    </tr>
+
+    <tr>
+      <td>name</td>
+      <td>fullname of the user</td>
+    </tr>
+    <tr>
+      <td>rank</td>
+      <td>the user's rank in the top 500 list</td>
+    </tr>
+    <tr>
+      <td>screen_name</td>
+      <td>the twitter handle</td>
+    </tr>
+    <tr>
+      <td>tweetsCount</td>
+      <td>number of tweets by the user</td>
+    </tr>    
+  </tbody>
+</table>
+
+
+<h1><a name="chapter3">3. Graph<font color="#7aadff"> Visualization</font></a></h1>
 </br></br></br>
 <div style="display: flex;">
-<img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_fullnetwork.png">
+  <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_fullnetwork.png">
 
-<p>Observe: There are three isolated nodes besides the GCC.</p>
-</div>
+  <p>As is shown to the left, the undirected social network graph consists of <b><font color="#7aadff">497 nodes</font></b> and <b> <font color="#7aadff">13243 links</font></b>. Each node stands for a twitter account with a link, the following relation, between two twitter accounts. <br><br>
+    It is noticeable that there are three isolated accounts without any link, in other words, they do not follow anyone and no one follows them neither. The rest nodes are closely connected to each other forming the <b>GCC</b> (<b>G</b>reatest <b>C</b>onnected <b>C</b>omponent).</p>
+  </div>
 </br></br></br>
 <h1><a name="chapter4">4. Basic <font color="#7aadff">statistics</font></a></h1>
 
-<p>Let us take a look at some basic statistics.</p>
+<p>Let us take a look and recap some basic statistics:</p>
 
-<p>number of nodes in the network: 497
-number of links in the network: 13243
-the nodes have an average total degree of: 53.291750503
-the nodes have an average in/out degree of: 26.6458752515 (total and average in- and out-degree is the same, since there is an incoming link for every outgoing link and vice versa)</p>
+<p><b>Number of nodes</b>: 497<br>
+  <b>Number of links</b>: 13243<br>
+  <b>Average total degree of nodes</b>: 53.291750503<br>
+  <b>Average in/out degree of nodes</b>: 26.6458752515 <br><br>
+<b>Note</b>: total and average in- and out-degree is the same, since there is an incoming link for every outgoing link and vice versa</p>
+<br><br>
+<div style="display: flex;">
+  <div>
+    <p style="margin: 0"><b>top 5 elite</b> accounts followed by most other elites:<br><br>
+      <font color="#7aadff">BarackObama</font> with 131 followers<br>
+      <font color="#7aadff">jimmyfallon</font> with 124 followers<br>
+      <font color="#7aadff">TheEllenShow</font> with 123 followers<br>
+      <font color="#7aadff">rihanna</font> with 109 followers<br>
+      <font color="#7aadff">justinbieber</font> with 99 followers<br>
+    </div>
+    <div>
+      <b>top 5 elite accounts</b> with most friends (following other elite accounts):<br><br>
+      <font color="#7aadff">SrBachchan</font> with 146 friends<br>
+      <font color="#7aadff">SnoopDogg</font> with 131 friends<br>
+      <font color="#7aadff">RyanSeacrest</font> with 125 friends<br>
+      <font color="#7aadff">samsmith</font> with 121 friends<br>
+      <font color="#7aadff">iamwill</font> with 120 friends</p>
+    </div>
+  </div>
 
-<p>top 5 elite accounts followed by most other elites:
-BarackObama with 131 followers
-jimmyfallon with 124 followers
-TheEllenShow with 123 followers
-rihanna with 109 followers
-justinbieber with 99 followers
+  <br><br>
+  <p><b>Number of occupation types in the network</b> (identified from Google right panel infobox): 30<br><br></p>
 
-top 5 elite accounts with most friends (following other elite accounts):
-SrBachchan with 146 friends
-SnoopDogg with 131 friends
-RyanSeacrest with 125 friends
-samsmith with 121 friends
-iamwill with 120 friends</p>
+    <h4>Occupation types description (Category list):</h4><br>
+<table>
+        <tbody>
+          <tr>
+            <td>Actors</td>
+            <td>Athletes</td>
+            <td>Authors</td>
+            <td>BusinessPeople </td>
+            <td>Comedians </td>
+          </tr>
+          <tr>
+            <td>Companies </td>
+            <td>DJs </td>
+            <td>DigitalMedia </td>
+            <td>Entertainers </td>
+            <td>Filmdirectors </td>
+          </tr>
+          <tr>
+            <td>GovernmentalBodies </td>
+            <td>Journalists </td>
+            <td>Magazines </td>
+            <td>Models </td>
+            <td>MusicGroups </td>
+          </tr>
+                    <tr>
+            <td>Musicians </td>
+            <td>Newspapers </td>
+            <td>Others </td>
+            <td>PoliticalParties </td>
+            <td>Politicians </td>
+          </tr>
+          <tr>
+            <td>Religion </td>
+            <td>RoyalPeople </td>
+            <td>Scientists </td>
+            <td>Singers </td>
+            <td>SocialMedia </td>
+          </tr>
+          <tr>
+            <td>Software </td>
+            <td>Sports </td>
+            <td>TV </td>
+            <td>TVPersonalities </td>
+            <td>Youtubers</td>
+          </tr>
+        </tbody>
+      </table>
+    </br>
+    <hr class="style-two">
 
-<p>number of occupation types in the network (identified from Google Infobox): 30
-
-the network has the following categories:
-Actors
-Athletes
-Authors
-BusinessPeople
-Comedians
-Companies
-DJs
-DigitalMedia
-Entertainers
-Filmdirectors
-GovernmentalBodies
-Journalists
-Magazines
-Models
-MusicGroups
-Musicians
-Newspapers
-Others
-PoliticalParties
-Politicians
-Religion
-RoyalPeople
-Scientists
-Singers
-SocialMedia
-Software
-Sports
-TV
-TVPersonalities
-Youtubers<p>
-</br></br></br>
-<img class="contentImg double" src="assets/graphs/export_categorieswithcount.png">
-</br></br></br>
+    <img class="contentImg double" src="assets/graphs/export_categorieswithcount.png">
+  </br></br></br>
 
 
-<h1><a name="chapter4">4. Connectedness</a></h1>
-<p>is the graph connected? -> False
-the network has 4 components
+  <h1><a name="chapter5">5. <font color="#7aadff">Connectedness</font></a></h1>
+  <p>The graph is an unconnected with 4 componets: <br><br>
+<b>Size of Greatest Connected Component</b>: 494 <br>
+<b>Isolated node</b>: mrdiab (twitter handle) <br>
+<b>Isolated node</b>: cbabdullahgul (twitter handle)<br>
+<b>Isolated node</b>: marioteguh (twitter handle)<br><br>
+There seems to be three isolated elite accounts, which is coherent with the visualization seen before. These accounts do not follow any elite accounts nor are they followed by any elite accounts. <br><br>
+<b>The network diameter is 5</b> which means for one account to connect to another account, it has to pass 5 accounts.
+A network diameter of 5 is suprisingly large in a small social network of 500 nodes. As known, the small world phenomenon or six degrees of separation <a style="font-weight: bold; color: #7aadff;" href="http://networksciencebook.com/chapter/3#small-worlds"><u>(section 3.8 in NetworkScienceBook.com)</u></a> says that between any randomly selected pair of individuals on Earth (i.e. roughly 7 billion nodes), there will exist a path between them consisting of at most 6 nodes .<br><br>
+In the following it is shown that the network is <b>not random</b>.<p>
 
-component sizes:
-size = 494
-size = 1 , people in component -> amrdiab
-size = 1 , people in component -> cbabdullahgul
-size = 1 , people in component -> marioteguh
-There seems to be three isolated elite accounts, which is coherent with the visualization seen before. These accounts do not follow any elite accounts nor are they followed by any elite accounts.</p>
-<p>the network diameter is: 5</p>
-<p>The elite Twitter account network is not random
-In the following it is shown that the network is not random.<p>
 
-</br></br></br>
-<img class="contentImg double"  src="assets/graphs/export_totaldegreedistr.png">
-</br></br></br>
+    </br></br></br>
+    <img class="contentImg double"  src="assets/graphs/export_totaldegreedistr.png">
+  </br></br></br>
 
-<p>The plots above do not clearly show that the distribution of total degree follows a poisson/binominal distribution nor a power-law distribution. The loglog plot seem to follow poisson/binominal curve, while the linear scale plot looks like a mixture of a power-law and poisson/binominal distribution, or a skewed poisson distribution. 
-However, the linear scale plot shows that there are a few high-degree nodes (hubs) and many low-degree nodes. To investigate further, we will look at the incoming degrees and outgoing degrees separately.</p>
+  <p>The plots above neither clearly show that the distribution of total degree follows a poisson/binominal distribution nor a power-law distribution. The <b>loglog plot seem to follow poisson/binominal curve</b>, while the <b>linear scale</b> plot looks like a mixture of a power-law and poisson/binominal distribution, or a <b>skewed poisson distribution</b>. However, the linear scale plot shows that there are a few high-degree nodes (hubs) and many low-degree nodes. To investigate further, we will look at the incoming degrees and outgoing degrees separately.</p>
 
 </br></br></br>
 <img class="contentImg double" src="assets/graphs/export_outdegreedistr.png">
 </br></br></br>
 
-<p>It can be seen here that the distribution of out-degree more closely follows a power-law distribution with a few hubs and many low-degree nodes. Although the loglog plot is not a straight line, the linear scale plot clearly looks more like a power-law distribution than a poisson/binominal distribution. The poisson/binominal distribution thus fails to capture the outgoing degree distribution. Ergo, this network has more highly connected nodes with respect to outgoing degree than the random network model can account for, and thus the network can be said to be scale-free with respect to outgoing degree. This also fits well together with the claim that 'real networks are not poisson' (section 3.4 in the book networksciencebook.com).
-This fits fairly well with the degree distribution of the Barabasi-Albert preferential attachment model, although the preference in this case not necessarily only depends on the degree of the nodes in the network - or even at all.
-If it is concluded that randomness cannot account for the outgoing degree property in the network, it may represent some signature of order. In this case it is interpreted to mean that it is not random whom users choose to follow. This makes sense, since users are in full control of whom they choose to follow. 
-Hubs with respect to outgoing degree are nodes that follow many other elite twitter accounts. These are nodes that likely get alot of information by other elite accounts.</p>
+<p>It can be seen here that <b>the distribution of out-degree more closely follows power-law distribution</b> with a few hubs and many low-degree nodes. Although the loglog plot is not a straight line, the <b>linear scale plot</b> clearly looks more like a <b>power-law distribution</b> than a poisson/binominal distribution. The poisson/binominal distribution thus fails to capture the outgoing degree distribution. Ergo, this network has more highly connected nodes with respect to outgoing degree than the random network model can account for, thus the network can be considered to be scale-free with respect to outgoing degree. This also fits well together with the claim that 'real networks are not poisson' (section 3.4 in the book networksciencebook.com). This fits fairly well with the degree distribution of the <b>Barabasi-Albert preferential attachment model</b>, although the preference in this case not necessarily only depends on the degree of the nodes in the network - or even at all. If it is concluded that randomness cannot account for the outgoing degree property in the network, it may represent some signature of order. In this case it is interpreted to mean that it is not random whom users choose to follow. This makes sense for users are in full control of whom they choose to follow. <b>Hubs</b> with respect to outgoing degree are nodes that follow many other elite twitter accounts. These are nodes that likely get alot of information by other elite accounts.
+</p>
 
 </br></br></br>
 <img class="contentImg double" src="assets/graphs/export_indegreedistr.png">
 </br></br></br>
 
-<p>The distribution of in-degree roughly looks like a power-law distribution on the linear scale, but not as clear as the out-degree. The loglog scale plot looks more like a poisson/binominal distribution plot, however. Conclusively, the incoming degree cannot be fully explained by randomness, but it does not look completely random either. This makes sense, since users cannot completely control who chooses to follow them in the same way they can choose whom to follow, but, as also seen in the scatterplot below, users might have some control over who chooses to follow them. 
-Hubs with respect to incoming degree are nodes that are followed by many elite accounts, and may be important in the sense that they reach alot of elite accounts in Twitter with the information they dissiminate.</p>
+<p>The distribution of in-degree roughly looks like a power-law distribution on the linear scale, but not as clear as the out-degree. The loglog scale plot looks more like a poisson/binominal distribution plot, however. <b>Conclusively, the incoming degree cannot be fully explained by randomness</b>, but it does not look completely random either. This makes sense, since users cannot completely control who chooses to follow them in the same way they can choose whom to follow, but, as also seen in the scatterplot below, users might have some control over who chooses to follow them. Hubs with respect to incoming degree are nodes that are followed by many elite accounts, and may be important in the sense that they reach a lot of elite accounts in Twitter with the information they dissiminate.</p>
 
 </br></br></br>
 <img class="contentImg double" src="assets/graphs/export_inoutscatterheatmap.png">
 </br></br></br>
 
-<p>This scatter plot is very interesting. It shows a positive correlation between followers and following. People strongly tend to follow more elite accounts as more elite accounts follow them. Up until around 50-60, the number of out-degree is nearly the exact same as the in-degree. This could be a clear reflection of accounts following back accounts that follow them. The "you follow me, I follow you" principle or the "follow-back" principle.
-Additionally, the majority of the accounts how low in-degrees and out-degrees.</p>
+<p>The scatter plot is interesting for <b>showing a positive correlation between followers and following</b>. People strongly tend to follow more elite accounts as more elite accounts follow them. <b>Up until around 50-60, the number of out-degree is nearly the exact same as the in-degree</b>. This could be a clear reflection of accounts following back accounts that follow them. The "you follow me, I follow you" principle or the "follow-back" principle. Additionally, the majority of the accounts how low in-degrees and out-degrees.</p>
 
 
-<h1><a name="chapter5">5. Regime</a></h1>
+<h1><a name="chapter6">6. <font color="#7aadff">Regime</font></a></h1>
 <p>It will be examined which regime the network is in.</p>
 
 <p>the network is in the connected regime
@@ -226,216 +286,279 @@ This is an interesting result, because according to section 3.6 in networkscienc
 <h1><a name="chapter6">?. Clusturing MAYBE !!</a></h1>
 <p>average clustering coefficient: 0.356247286567</p>
 
-<h1><a name="chapter6">6. Visualization of counts in the network (followCount, friendCount and tweetsCount)</a></h1>
+<h1><a name="chapter7">7. Visualization of <font color="#7aadff">counts</font> in the network (followCount, friendCount and tweetsCount)</a></h1>
 <p>The following visualizations and work is done on basis of the GCC.</p>
 <p>The size of the nodes bellow are related to attributes</p>
 
-  <div style="display: flex;">
-    <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeFollowers.png">
-    <div style="">
-      <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeFriends.png">
-      <br>
-      <p>Looking at the out-degree distribution, it makes sense that we see a few nodes with a very big size and many nodes with very small sizes (mostly too small to see).</p>
-    </div>
-    <br>
+<div style="display: flex;">
+  <div>
+    <img class="contentImg" style="width: 550px;height: 550px; margin: 0 0!important;" src="assets/graphs/export_graphNodeSizeFollowers.png">
+    <p>A very important note for this plot is that the node size is set according to the number of total followers the account has on Twitter. This includes accounts that are not in the elite. 
+    The number of followers does differ between the nodes in the network, however the difference does not seem to be very significant. More followed nodes seem to be positioned towards the inner half of the network.</p>
   </div>
-  <div style="display: flex;">
-    <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeTweets.png">
-    <div>
-      <img class="contentImg" style="width: 600px;height: 600px;" src="assets/graphs/export_graphNodeSizeRank.png">
-      <br>
-      <p>There seems to be no concentration of nodes according to rank. Nodes are spread out fairly evenly in terms of rank.</p>
-    </div>
+  <div>
+    <img class="contentImg" style="width: 550px;height: 550px;" src="assets/graphs/export_graphNodeSizeFriends.png">
+    <p>Looking at the out-degree distribution, visualised previously, it makes sense that we see a few nodes with a very big size and many nodes with very small sizes (mostly too small to see). Recall, that the out-degree distribution was very much shaped like a power-law, i.e. there are many nodes of small in-degree and a very few nodes of very high in-degree, which is coherent with the few large nodes in the visualization above.</p>
   </div>
+  <br>
+</div>
+<br><br>
+<hr class="style-two">
+<br><br>
+<div style="display: flex;">
+  <div>
+    <img class="contentImg" style="width: 550px;height: 550px; margin: 0 0!important;" src="assets/graphs/export_graphNodeSizeTweets.png">
+    <p>There seem to be some clustering of active nodes in terms of tweeting, which might suggest that active nodes tend to connect to eachother.</p>
+  </div>
+  <div>
+    <img class="contentImg" style="width: 550px;height: 550px;" src="assets/graphs/export_graphNodeSizeRank.png">
+    <p>There seems to be no concentration of nodes according to rank. Nodes are spread out fairly evenly in terms of rank. Note that the size of the nodes have undergone an exponentiation to the power of 5 to make the difference in node size more clear.</p>
+  </div>
+</div>
 
 
-<h1><a name="chapter7">7. Visualization of the occupation categories in the network</a></h1>
+<h1><a name="chapter8">8. Visualization of the <font color="#7aadff">occupation</font> categories in the network</a></h1>
 </br></br>
 <img class="contentImg" style="width: 1000px;" src="assets/graphs/export_graphCategoriesColored.png">
-</br></br>
 
-<p><b>Hubs</b></p>
-<p>Analyze the network for hubs. The out-degree distribution looks like a power-law distribution on the linear scale. Does this mean that the network is scale-free? Do we need to have a degree distribution for the total degree, i.e. a degree distribution for the undirected version of the graph?
-<p><b>Centrality</b></p>
-<p>In the following, the most important nodes/accounts by different centrality measures will be highlighted. The centrality measures investigated in this section are degree centrality, betweenness centrality, and eigenvector centrality.</p>
-<p><b>also</b> do closeness centrality https://www.cl.cam.ac.uk/teaching/1314/L109/tutorial.pdf, slide 36</p>
+
+<h4>Hubs</h4>
+<p>Analyze the network for hubs. The <b>out-degree distribution looks like a power-law distribution on the linear scale</b>. Does this mean that the network is scale-free? Do we need to have a degree distribution for the total degree, i.e. a degree distribution for the undirected version of the graph?<br>
+<h4>Centrality</h4>
+  <p>In the following, <b>the most important nodes/accounts by different centrality measures will be highlighted</b>. The centrality measures investigated in this section are degree centrality, betweenness centrality, and eigenvector centrality.</p>
+  <p><b>also</b> do <b>closeness centrality</b> https://www.cl.cam.ac.uk/teaching/1314/L109/tutorial.pdf, slide 36</p>
 
 </br></br></br>
-<div style="display: flex;">
-<img class="contentImg" style="width: 500px;height: 400px;" src="assets/graphs/export_graphNodeSizeDegree.png">
-<img class="contentImg" style="width: 500px;height: 400px;" src="assets/graphs/export_graphNodeSizeBetw.png">
-</div>
-</br></br></br></br></br>
-<img class="contentImg" src="assets/graphs/export_graphNodeSizeEig.png">
 
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_graphNodeSizeDegree.png">
+<p>The categories for the top 5 most followed elite accounts are <b>politicians, entertainers</b> and <b>singers</b>. This centrality measure is an obvious measure for the centrality/importance of the nodes. It provides straight-forward propositions for the most important nodes in the network, as these accounts are the most followed by other elite accounts, and thus should have the ability to reach out to the most elite accounts. However, the difference in the in-degree between these 5 nodes and the rest of the nodes is not very pronounced, so the "power" that these nodes have is probably not so significant.</p>
+<hr class="style-two">
+<br><br>
 
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_graphNodeSizeBetw.png">
+<p>The <b>betweenness centrality</b> measure in the context of Twitter-follows could indicate how much an account is followed by or follows a pair of randomly selected other accounts. This also makes sense since SrBachchan and SnoopDogg constitute the top 2 account, who follow other elite accounts.</p>
+<hr class="style-two">
+<br><br>
 
+<img class="contentImg" style="width: 1000px;" src="assets/graphs/export_graphNodeSizeEig.png">
+<p>The <b>highest eigenvector centralities</b> are observed in entertainers, politicians and singers. The top 2 eigenvector centralities are observed with jimmyfallon and TheEllenShow, which makes sense since these are talk show hosts and are visited by (and thus personally known by) a lot of celebrities, which connects them with other nodes of high importance and evidently renders them important.</p>
 
-<h1><a name="chapter8">8. Communities</a></h1>
-<p>The Louvain algorithm will be used to detect communities. We will se how well they fit with the categories.</p>
-<p>the Louvain algorithm found 5 communities</p>
+<h1><a name="chapter9">9. Louvain <font color="#7aadff">Communities</font></a></h1>
+<p>The Louvain algorithm will be used to detect <b>communities</b>. We will se how well they fit with the categories.</p>
+<p>The Louvain algorithm found: <h4 style="margin: auto; display: block; text-align: center;">5 communities</h4></p><br>
 <p>The Louvain algorithm found 5 communities, which is much smaller than the number of categories we have (30). Why? Are the accounts likely to not care about the occupation of other accounts?</p>
-<p>modularity for the partition suggested by the Louvain algorithm is: 0.304122333979</p>
-<p>The modularity for the communities found by the Louvain algorithm is .3, which is rather low, suggesting that the communities found by the algorithm may not represent reality very well.</p>
+<p><b>Modularity</b> for the partition suggested by the Louvain algorithm is: <b>0.304122333979</b></p>
+<p>The modularity for the communities found by the Louvain algorithm is <b>3</b>, which is rather low, suggesting that the communities found by the algorithm may not represent reality very well.</p>
 
-</br></br></br></br></br>
-<img class="contentImg" style="width: 600px;height: 500px;" src="assets/graphs/export_graphLouvainComm.png">
-</br></br></br></br></br>
+</br></br>
+<img class="contentImg" style="width: 1000px;height: 750px; margin: 0 0;" src="assets/graphs/export_graphLouvainComm.png">
 
-</br></br></br></br></br>
+<hr class="style-two">
+</br></br>
+
 <img class="contentImg" style="width: 1000px;" src="assets/graphs/export_confMatrix1.png">
-</br></br></br></br></br>
+</br></br>
 
-<p>To make the confusion matrix even more clear, we will make the confusion based on log values to bring out the data more clearly, because for the raw count there is a very big difference in the number of people in a category.</p>
+<p><b>To make the confusion matrix even more clear, we will make the confusion based on log values to bring out the data more clearly, because for the raw count there is a very big difference in the number of people in a category.</b></p>
 
-</br></br></br></br></br>
+</br></br>
 <img class="contentImg" style="width: 1000px;" src="assets/graphs/export_confMatrix2.png">
-</br></br></br></br></br>
+</br></br>
 
-<p>To try to shed even more light on who connects to whom, we will show only one colored square per category. This more clearly shows in which community the majority of accounts from each category are placed.</p>
+<p><b>To try to shed even more light on who connects to whom, we will show only one colored square per category. This more clearly shows in which community the majority of accounts from each category are placed.</b></p>
 
 
-</br></br></br></br></br>
+</br></br>
 <img class="contentImg" style="width: 1000px;" src="assets/graphs/export_confMatrix3.png">
-</br></br></br></br></br>
+</br></br>
 
 
 <p>
-  From this confusion matrix, it can be elicited which categories connect more.<br>
-Communities:<br>
-0 (Music)<br>
-Companies<br>
-DJs<br>
-Entertainers<br>
-Models<br>
-Music groups<br>
-Musicians<br>
-Singers<br>
-TV personalities<br>
-Youtubers<br>
-1 (Information and society changes)<br>
-Authors<br>
-Business people<br>
-Comedians<br>
-Digital Media<br>
-Governmental Bodies<br>
-Journalists<br>
-Magazines<br>
-Newspapers<br>
-Others<br>
-Politicians<br>
-Royal people<br>
-Scientists<br>
-Social media<br>
-Software<br>
-TV<br>
-2 (Film/Movies)<br>
-Actors<br>
-Film directors<br>
-Political parties<br>
-3 (Sports)<br>
-Athletes<br>
-Sports<br>
-4 (Religion)<br>
-Religion<br><br>
-As evident from the list above, there seems to be a system in the communities.
-Accounts affiliated with music (singers, music groups, djs, etc.) seem to gather in one community with some other accounts. Youtubers, companies, models and tv personalities might not directly have something to do with music, but seem to want to connect a lot with accounts affilitated with music.<br>
-Accounts that more or less directly impact society and influence people's position or attitude on certain matters seem to gather in one community. Authors, digital media, journalists, newspapers, politicans and media seem to fit together well.
-Accounts affiliated with film and movie making are nicely grouped in a community (actors and film directors). Political parties seem like a misplaced category here as it seems to fit better in with the previously mentioned community.
-Accounts affiliated with sports are grouped into a community, which makes sense.
-And finally, there is a single account affiliated with religion, which has been placed in its own community.<br>
-From the confusion matrix, we can see that most of the singers are in a community together. Many of the network's atheltes are also placed in a community together. However, actors are split up into largely 3 communities, some of which find themselves in the same community as most of the singers, and some with most of the Digital Media. We also see a somewhat strong correlation between Athletes and Sports, whom are largely placed in the same community.</p>
+  <b>From this confusion matrix, it can be elicited which categories connect more.</b><br><br><br>
+  <h4>Communities:</h4><br>
+
+  <div style="display: flex;">
+    <div style="flex: 1;">
+      <h6><b><font color="#7aadff">0 (Music)</font></b></h6><br>
+      Companies<br>
+      DJs<br>
+      Entertainers<br>
+      Models<br>
+      Music groups<br>
+      Musicians<br>
+      Singers<br>
+      TV personalities<br>
+      Youtubers<br><br>
+    </div>
+    <div style="flex: 1;">
+
+      <h6 style="padding-right: 10px;"><b><font color="#7aadff">1 (Information and society changes)</font></b></h6><br>
+      Authors<br>
+      Business people<br>
+      Comedians<br>
+      Digital Media<br>
+      Governmental Bodies<br>
+      Journalists<br>
+      Magazines<br>
+      Newspapers<br>
+      Others<br>
+      Politicians<br>
+      Royal people<br>
+      Scientists<br>
+      Social media<br>
+      Software<br>
+      TV<br><br>
+    </div>
+    <div style="flex: 1;">
+
+      <h6><b><font color="#7aadff">2 (Film/Movies)</font></b></h6><br>
+      Actors<br>
+      Film directors<br>
+      Political parties<br>
+    </div>
+    <div style="flex: 1;">
+
+      <h6><b><font color="#7aadff">3 (Sports)</font></b></h6><br>
+      Athletes<br>
+      Sports<br><br>
+    </div>
+    <div style="flex: 1;">
+
+      <h6><b><font color="#7aadff">4 (Religion)</font></b></h6><br>
+      Religion<br><br>
+    </div>
+  </div>
+  <br><br>
+  As evident from the list above, <b>there seems to be a system in the communities.</b>
+  Accounts affiliated with music (singers, music groups, djs, etc.) seem to gather in one community with some other accounts. Youtubers, companies, models and tv personalities might not directly have something to do with music, but seem to want to connect a lot with accounts affilitated with music.<br><br>
+  Accounts that more or less directly impact society and influence people's position or attitude on certain matters seem to gather in one community. Authors, digital media, journalists, newspapers, politicans and media seem to fit together well.
+  Accounts affiliated with film and movie making are nicely grouped in a community (actors and film directors). Political parties seem like a misplaced category here as it seems to fit better in with the previously mentioned community.
+  Accounts affiliated with sports are grouped into a community, which makes sense.<br><br>
+  And finally, there is a single account affiliated with religion, which has been placed in its own community.<br><br>
+  From the confusion matrix, we can see that <b>most of the singers are in a community together.</b> Many of the network's <b>atheltes are also placed in a community together.</b> However, actors are split up into largely 3 communities, some of which find themselves in the same community as most of the singers, and some with most of the Digital Media. We also see a somewhat strong correlation between Athletes and Sports, whom are largely placed in the same community.</p>
 
 
-<h1><a name="chapter9">9. Assortativity</a></h1>
-<p>In the following, we will check for assortativity on two parameters: Degree and category.</p>
-<p>0.042287123080426925</p>
-<p>Conclusion: The degree assortativity is effectively 0, so there is no assortativity, i.e. the assortativity is basically random, i.e. there is no pattern in who connects to whom in terms of their degrees.</p>
-
-<p>0.13245860604</p>
-<p>Conclusion: The category assortativity is 0.13, which is still not high and therefore does not suggest a strong assortativity based on category, but it is higher than the degree assortativity, and it is above 0, suggesting that there is some assortativity with respect to category.</p>
-<p>This also supports the findings from the confusion matrix. While accounts in general connect with accounts from many other categories, Singers tend to connect more to Musicians, DJs, Actors and Youtubers - which makes sense.</p>
-<p>Just to check, we have also checked assortativity on the rest of the attributes:<br>
-Count of tweets<br>
-Count of followers<br>
-Rank (effectively the same as 'count of followers' as the rank is based on the number of followers)<br>
-Count of friends<br>
-</p>
+  <h1><a name="chapter10">10. Assortativity</a></h1>
 
 
+  <div style="display: flex;">
+    <table style="width: 100px;">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><font color="#7aadff">Degree</font></td>
+          <td>0.042287123080426925</td>
+        </tr>
+        <tr>
+          <td><font color="#7aadff">Category</font></td>
+          <td>0.13245860604</td>
+        </tr>
+        <tr>
+          <td>TweetsCount</td>
+          <td>-0.00235661944811</td>
+        </tr>
+        <tr>
+          <td>FollowersCount</td>
+          <td>-0.00247377054809</td>
+        </tr>
+        <tr>
+          <td>Rank *</td>
+          <td>-0.00247377054809</td>
+        </tr>
+        <tr>
+          <td>FriendCount</td>
+          <td>-0.00249488597692</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <p><b><font color="#7aadff">Degree</font> | Conclusion:</b> The degree assortativity is effectively 0, so there is no assortativity, i.e. the assortativity is basically random, i.e. there is no pattern in who connects to whom in terms of their degrees.</p><br>
 
+      <p><b><font color="#7aadff">Category</font> | Conclusion:</b> The category assortativity is 0.13, which is still not high and therefore does not suggest a strong assortativity based on category, but it is higher than the degree assortativity, and it is above 0, suggesting that there is some assortativity with respect to category.</p><br>
 
+      <p>This also supports the findings from the confusion matrix. While accounts in general connect with accounts from many other categories, Singers tend to connect more to Musicians, DJs, Actors and Youtubers - which makes sense.</p><br>
+      <p><b>* Rank</b> :effectively the same as 'count of followers' as the rank is based on the number of followers<br>
+      </p>
+    </div>
 
-<h1><a name="chapter10">10. Wordclouds</a></h1>
-
-
-<!-- Select input panel -->
-  <div class="input-field col s12">
-    <select style="display: block; width: 150px; margin: auto;margin-bottom: 32px;" onchange="wordcloudOnChange(this.value)">
-  <option value="" disabled selected>Select a category</option>
-<option value='Singers'> Singers </option>
-<option value='Actors'> Actors </option>
-<option value='Athletes'> Athletes </option>
-<option value='DigitalMedia'> DigitalMedia </option>
-<option value='Politicians'> Politicians </option>
-<option value='Companies'> Companies </option>
-<option value='TV'> TV </option>
-<option value='Musicians'> Musicians </option>
-<option value='Entertainers'> Entertainers </option>
-<option value='Sports'> Sports </option>
-<option value='Youtubers'> Youtubers </option>
-<option value='Religion'> Religion </option>
-<option value='BusinessPeople'> BusinessPeople </option>
-<option value='MusicGroups'> MusicGroups </option>
-<option value='Authors'> Authors </option>
-<option value='Others'> Others </option>
-<option value='Journalists'> Journalists </option>
-<option value='DJs'> DJs </option>
-<option value='Comedians'> Comedians </option>
-<option value='Newspapers'> Newspapers </option>
-<option value='Models'> Models </option>
-<option value='TVPersonalities'> TVPersonalities </option>
-<option value='Magazines'> Magazines </option>
-<option value='GovernmentalBodies'> GovernmentalBodies </option>
-<option value='SocialMedia'> SocialMedia </option>
-<option value='Filmdirectors'> Filmdirectors </option>
-<option value='Software'> Software </option>
-<option value='Scientists'> Scientists </option>
-<option value='RoyalPeople'> RoyalPeople </option>
-<option value='PoliticalParties'> PoliticalParties </option>
-    </select>
-    <label>Generate wordcloud for a specific celebrity</label>
   </div>
 
-<img id="wordcloudImgSelectable" src="assets/bird.png" style="text-align: center;display: block;margin:auto;width: 500px;">
+
+  <h1><a name="chapter11">11. Wordclouds</a></h1>
+
+
+  <!-- Select input panel -->
+  <div class="input-field col s12">
+    <select style="display: block; width: 150px; margin: auto;margin-bottom: 32px;" onchange="wordcloudOnChange(this.value)">
+      <option value="" disabled selected>Select a category</option>
+      <option value='Singers'> Singers </option>
+      <option value='Actors'> Actors </option>
+      <option value='Athletes'> Athletes </option>
+      <option value='DigitalMedia'> DigitalMedia </option>
+      <option value='Politicians'> Politicians </option>
+      <option value='Companies'> Companies </option>
+      <option value='TV'> TV </option>
+      <option value='Musicians'> Musicians </option>
+      <option value='Entertainers'> Entertainers </option>
+      <option value='Sports'> Sports </option>
+      <option value='Youtubers'> Youtubers </option>
+      <option value='Religion'> Religion </option>
+      <option value='BusinessPeople'> BusinessPeople </option>
+      <option value='MusicGroups'> MusicGroups </option>
+      <option value='Authors'> Authors </option>
+      <option value='Others'> Others </option>
+      <option value='Journalists'> Journalists </option>
+      <option value='DJs'> DJs </option>
+      <option value='Comedians'> Comedians </option>
+      <option value='Newspapers'> Newspapers </option>
+      <option value='Models'> Models </option>
+      <option value='TVPersonalities'> TVPersonalities </option>
+      <option value='Magazines'> Magazines </option>
+      <option value='GovernmentalBodies'> GovernmentalBodies </option>
+      <option value='SocialMedia'> SocialMedia </option>
+      <option value='Filmdirectors'> Filmdirectors </option>
+      <option value='Software'> Software </option>
+      <option value='Scientists'> Scientists </option>
+      <option value='RoyalPeople'> RoyalPeople </option>
+      <option value='PoliticalParties'> PoliticalParties </option>
+    </select>
+    <label>Generate wordcloud for a specific <b>Category</b></label>
+  </div>
+
+  <img id="wordcloudImgSelectable" src="assets/placeholderBird.png" style="text-align: center;display: block;margin:auto;width: 500px;">
 
 
 
 
 
-<h1><a name="chapter11">11. Sentiment analysis</a></h1>
+  <h1><a name="chapter12">12. Sentiment analysis</a></h1>
 
 
-<img class="contentImg" src="assets/graphs/export_sentimentPerAccountColoredOrdered.png">
+  <img class="contentImg" src="assets/graphs/export_sentimentPerAccountColoredOrdered.png">
 
 
-<h1><a name="chapter12">12. Positive and negative tweets
-</a></h1>
+  <h1><a name="chapter13">13. Positive and negative tweets
+  </a></h1>
 
-</br></br></br></br></br>
-<img class="contentImg" src="assets/graphs/export_wordcloudPositive.png">
-</br></br></br></br></br>
-</br></br></br></br></br>
-<img class="contentImg" src="assets/graphs/export_wordcloudNegative.png">
-</br></br></br></br></br>
 
-<h1><a name="chapter13">13. Assortativity by sentiment
-</a></h1>
-<p>To tie the graph part together with the sentiment part, the network is analyzed for assortativity by positivity and negativity to answer the question: "Do accounts of the same average sentiment tend to connect with eachother?" As in do positive people tend to connect to other positive people, and do negative people tend to connect to other negative people? Or is there no system in this?</p>
-<p>The average sentiment for each account does not seem to account for much assortativity as the value is 0.05, which is effectively 0 on a scale from 0 to 1. This result is likely affected by the limitation that the sentiment calculation is not 100% correct as it does not evaluate the context in which words are used, which may produce a wrong result.</p>
+  <div style="display: flex;">
+    <img class="contentImg" style="width: 500px; height: 500px;" src="assets/graphs/export_wordcloudPositive.png">
+    <img class="contentImg" style="width: 500px; height: 500px;" src="assets/graphs/export_wordcloudNegative.png">
+  </div>
 
-<h1><a name="conclusion">Conclusion</a></h1>
-<p>To conclude this investigation and project, it does not seem like there are any one account or person that secretly has extrordinally much power.</p>
+
+  <h1><a name="chapter14">14. Assortativity by sentiment
+  </a></h1>
+  <p>To tie the graph part together with the sentiment part, the network is analyzed for assortativity by positivity and negativity to answer the question: "Do accounts of the same average sentiment tend to connect with eachother?" As in do positive people tend to connect to other positive people, and do negative people tend to connect to other negative people? Or is there no system in this?</p>
+  <p>The average sentiment for each account does not seem to account for much assortativity as the value is 0.05, which is effectively 0 on a scale from 0 to 1. This result is likely affected by the limitation that the sentiment calculation is not 100% correct as it does not evaluate the context in which words are used, which may produce a wrong result.</p>
+
+  <h1><a name="conclusion">Conclusion</a></h1>
+  <p>To conclude this investigation and project, it does not seem like there are any one account or person that secretly has extrordinally much power.</p>
 
 
 </div>
@@ -447,9 +570,9 @@ Count of friends<br>
       <div class="col l6 s12">
         <h5 class="white-text">Final Project</h5>
         <p class="grey-text text-lighten-4">Date of delivery: 12th December 2018 
-Course: 02805 Social Graphs and Interactions 
-Course responsible: Sune Lehmann Jørgensen 
-DTU - Technical University of Denmark</p>
+          Course: 02805 Social Graphs and Interactions 
+          Course responsible: Sune Lehmann Jørgensen 
+        DTU - Technical University of Denmark</p>
       </div>
       <div class="col l4 offset-l2 s12">
         <h5 class="white-text">Group</h5>
@@ -480,11 +603,11 @@ DTU - Technical University of Denmark</p>
 
 
 <script>
-function wordcloudOnChange(url) {
-  var picurl = '/assets/graphs/export_wordcloudCategory_'+ url +'.png';
-  document.getElementById("wordcloudImgSelectable").src=picurl;
-  document.getElementById("wordcloudImgSelectable").style.margin='auto';
-}
+  function wordcloudOnChange(url) {
+    var picurl = '/assets/graphs/export_wordcloudCategory_'+ url +'.png';
+    document.getElementById("wordcloudImgSelectable").src=picurl;
+    document.getElementById("wordcloudImgSelectable").style.margin='auto';
+  }
 </script>
 
 
